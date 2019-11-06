@@ -5,9 +5,14 @@
   "author": "{{cookiecutter.author}}",
   "license": "MIT",
   "scripts": {
-    "compile": "tsc",
-    "start": "ts-node-dev --respawn --no-notify --inspect=0.0.0.0:9229 ./src/app.ts",
-    "test": "nyc mocha -r ts-node/register --inspect=0.0.0.0:9230 src/**/*.spec.ts"
+    "build:image": "docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t {{cookiecutter.docker_tag}}:dev .",
+    "compile": "docker run --rm -it -v $(pwd):/srv/app {{cookiecutter.docker_tag}}:dev local:compile",
+    "start": "docker run --rm -it -v $(pwd):/srv/app -p 3000:3000 -p 9229:9229 {{cookiecutter.docker_tag}}:dev local:start",
+    "test": "docker run --rm -it -v $(pwd):/srv/app -p 9230:9230 {{cookiecutter.docker_tag}}:dev local:test",
+    "local:compile": "tsc",
+    "local:start": "ts-node-dev --respawn --no-notify --inspect=0.0.0.0:9229 ./src/app.ts",
+    "local:test": "nyc mocha -r ts-node/register --inspect=0.0.0.0:9230 src/**/*.spec.ts",
+    "docker": "docker run --rm -it -v $(pwd):/srv/app {{cookiecutter.docker_tag}}:dev"
   },
   "devDependencies": {
     "@types/chai": "^4.2.3",
