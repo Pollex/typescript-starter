@@ -1,4 +1,5 @@
 {
   "project_name": "typescript-project",
-  "author": "Your name <Email>"
+  "author": "Your name <Email>",
+  "docker_tag": "pollex/typescriptproject"
 }

@@ -9,9 +9,20 @@ then
   exit 1
 fi
 
+if [ -z "$(which docker)" ];
+then
+  printf "Could not find docker. Please install docker, see:\n\n"
+  printf " https://docker.com/ \n\n"
+  exit 1
+fi
+
 printf "\n\n=======================\n"
-printf "Installing dependencies...\n"
-yarn install
+printf "Building docker development image\n"
+yarn build:image
+
+printf "\n\n=======================\n"
+printf "Installing local node dependencies...\n"
+yarn docker install
 
 printf "\n\n=======================\n"
 printf "Compiling project...\n"
