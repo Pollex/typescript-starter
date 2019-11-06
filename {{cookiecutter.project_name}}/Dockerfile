@@ -15,7 +15,11 @@ COPY . /srv/app
 
 # Install dependencies
 # Fix permissions
-RUN yarn install --frozen-lockfile && yarn local:compile && yarn install --frozen-lockfile --production && yarn cache clean && chown -R node:node /srv/app 
+RUN yarn install --frozen-lockfile \
+    && yarn local:compile \
+    && yarn install --frozen-lockfile --production \
+    && yarn cache clean \
+    && chown -R node:node /srv/app 
 
 USER node
 
