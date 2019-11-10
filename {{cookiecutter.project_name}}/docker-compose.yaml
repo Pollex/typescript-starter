@@ -1,0 +1,13 @@
+version: '3.7'
+
+services:
+  app:
+    build:
+      context: .
+    image: {{cookiecutter.docker_tag}}
+    command: yarn local:debug
+    volumes:
+      - ./:/srv/app/
+    ports:
+      - 5858:5858
+      - 3000:3000

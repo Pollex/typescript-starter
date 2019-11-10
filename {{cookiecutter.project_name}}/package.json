@@ -5,14 +5,11 @@
   "author": "{{cookiecutter.author}}",
   "license": "MIT",
   "scripts": {
-    "build:image": "docker build --build-arg UID=$(id -u) --build-arg GID=$(id -g) -t {{cookiecutter.docker_tag}}:dev .",
-    "compile": "docker run --rm -it -v $(pwd):/srv/app {{cookiecutter.docker_tag}}:dev local:compile",
-    "start": "docker run --rm -it -v $(pwd):/srv/app -p 3000:3000 -p 9229:9229 {{cookiecutter.docker_tag}}:dev local:start",
-    "test": "docker run --rm -it -v $(pwd):/srv/app -p 9230:9230 {{cookiecutter.docker_tag}}:dev local:test",
-    "local:compile": "tsc",
-    "local:start": "ts-node-dev --respawn --no-notify --inspect=0.0.0.0:9229 ./src/app.ts",
-    "local:test": "nyc mocha -r ts-node/register --inspect=0.0.0.0:9230 src/**/*.spec.ts",
-    "docker": "docker run --rm -it -v $(pwd):/srv/app {{cookiecutter.docker_tag}}:dev"
+    "build:image": "docker-compose build --build-arg UID=$(id -u) --build-arg GID=$(id -g) app",
+    "watch": "tsc -w",
+    "debug": "docker-compose up",
+    "local:debug": "nodemon --legacy-watch --watch ./dist --inspect=0.0.0.0:5858 --nolazy ./dist/app.js",
+    "test": "nyc mocha -r ts-node/register --inspect=0.0.0.0:5859 src/**/*.spec.ts",
   },
   "devDependencies": {
     "@types/chai": "^4.2.3",
@@ -25,10 +22,10 @@
     "eslint-config-prettier": "^6.4.0",
     "eslint-plugin-prettier": "^3.1.1",
     "mocha": "^6.2.1",
+    "nodemon": "^1.19.4",
     "nyc": "^14.1.1",
     "prettier": "^1.18.2",
     "ts-node": "^8.4.1",
-    "ts-node-dev": "^1.0.0-pre.43",
     "typescript": "^3.6.4"
   },
   "prettier": {
