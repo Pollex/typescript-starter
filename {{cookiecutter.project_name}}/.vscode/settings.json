@@ -5,4 +5,11 @@
     { "language": "typescript", "autoFix": true },
   ],
   "eslint.packageManager": "yarn"
+  "mocha.files.glob": "src/**/*.spec.ts",
+  "mocha.requires": [
+    "ts-node/register"
+  ],
+  "mocha.options": {
+    "--exit":"",
+  }
 }
