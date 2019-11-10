@@ -23,5 +23,4 @@ RUN yarn install --frozen-lockfile \
 
 USER node
 
-ENTRYPOINT [ "yarn" ]
-CMD [ "local:start:prod" ]
+CMD [ "yarn", "local:start:prod" ]
