@@ -1,7 +1,7 @@
 {
   "name": "{{cookiecutter.project_name}}",
   "version": "0.0.1",
-  "main": "src/app.js",
+  "main": "dist/app.js",
   "author": "{{cookiecutter.author}}",
   "license": "MIT",
   "scripts": {
