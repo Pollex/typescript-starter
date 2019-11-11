@@ -4,7 +4,7 @@ services:
   app:
     build:
       context: .
-    image: {{cookiecutter.docker_tag}}
+    image: {{cookiecutter.docker_tag}}:dev
     command: yarn local:debug
     volumes:
       - ./:/srv/app/
