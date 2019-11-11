@@ -1,4 +1,4 @@
-FROM node:12-slim
+FROM node:12-alpine
 
 # Prepare user with uid and gid
 ARG UID=1000
@@ -15,8 +15,8 @@ COPY . /srv/app
 
 # Install dependencies
 # Fix permissions
-RUN yarn install --frozen-lockfile \
-    && yarn local:compile \
+RUN yarn install \
+    && yarn tsc \
     && yarn install --frozen-lockfile --production \
     && yarn cache clean \
     && chown -R node:node /srv/app 

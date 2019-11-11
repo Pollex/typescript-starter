@@ -22,11 +22,11 @@ yarn build:image
 
 printf "\n\n=======================\n"
 printf "Installing local node dependencies...\n"
-yarn docker install
+yarn install
 
 printf "\n\n=======================\n"
 printf "Compiling project...\n"
-yarn compile
+yarn tsc
 
 printf "\n\n=======================\n"
 printf "Executing sanity tests\n"

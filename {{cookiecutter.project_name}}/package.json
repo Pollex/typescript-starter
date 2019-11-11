@@ -9,7 +9,7 @@
     "watch": "tsc -w",
     "debug": "docker-compose up",
     "local:debug": "nodemon --legacy-watch --watch ./dist --inspect=0.0.0.0:5858 --nolazy ./dist/app.js",
-    "test": "nyc mocha -r ts-node/register --inspect=0.0.0.0:5859 src/**/*.spec.ts",
+    "test": "nyc mocha -r ts-node/register --inspect=0.0.0.0:5859 src/**/*.spec.ts"
   },
   "devDependencies": {
     "@types/chai": "^4.2.3",
