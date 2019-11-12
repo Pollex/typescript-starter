@@ -1,5 +1,8 @@
 FROM node:12-alpine
 
+# Install usermod & groupmod for alpine
+RUN apk --no-cache add shadow
+
 # Prepare user with uid and gid
 ARG UID=1000
 ARG GID=1000
