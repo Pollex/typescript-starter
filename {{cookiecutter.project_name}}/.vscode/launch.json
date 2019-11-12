@@ -12,9 +12,12 @@
       "runtimeExecutable": "yarn",
       "runtimeArgs": [ "debug" ],
       "port": 5858,
+      "restart": true,
       "localRoot": "${workspaceFolder}",
       "remoteRoot": "/srv/app",
       "sourceMaps": true,
+      "internalConsoleOptions": "neverOpen",
+      "console": "integratedTerminal",
       "outFiles": [
         "${workspaceFolder}/**/*.js"
       ]
